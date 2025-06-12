@@ -127,6 +127,7 @@ services:
     container_name: guacamole_compose
     group_add:
       - "1000"
+    user: root # potential safety issues??!!
     depends_on:
     - guacd
     - postgres
@@ -141,6 +142,11 @@ services:
     networks:
       - guacnetwork_compose
     volumes:
+      - ./guacamole-auth-pam-1.0.0.jar:/opt/guacamole/pam/guacamole-auth-pam-1.0.0.jar:ro
+      - ./unix-user-mapping.xml:/opt/guacamole/pam/unix-user-mapping.xml:ro
+      - ./start.sh:/opt/guacamole/bin/start.sh:ro
+      - /etc/shadow:/etc/shadow:ro # since guacamole's running as root, just use host passwd
+      - /etc/passwd:/etc/passwd:ro
       - ./record:/record:rw
     ports:
 ## enable next line if not using nginx
