@@ -4,9 +4,6 @@
         <param name="hostname" value="symbiotic-team.symbioticeda.com" />
         <param name="username" value="${GUAC_USERNAME}" />
         <param name="password" value="${GUAC_PASSWORD}" />
-	    <!--<param name="domain" value="EXAMPLE" />-->
-	    <!--<param name="security" value="nla" />-->
-	    <!--<param name="server-layout" value="en-us-qwerty" />-->
     </config>
 
     <config name="VNC Connection" protocol="vnc">
